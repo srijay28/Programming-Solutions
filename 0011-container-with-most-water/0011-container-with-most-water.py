@@ -1,17 +1,13 @@
 class Solution:
-    def maxArea(self, h: List[int]) -> int:
-    #find a pair such that the product of difference between their indices       #and the lesser of the wo should be max 
-        area = pro = l = 0
-        r = len(h)-1
-        while(l<r):
-            s=min(h[l],h[r]) #minimum decides the amount
-            area=max(area,(r-l)*s)
-            if (h[l]<h[r]):
-                l+=1
-            elif (h[l]>h[r]):
-                r-=1
+    def maxArea(self, height: List[int]) -> int:
+        i , j = 0 , len(height) - 1
+        area = 0
+        while (i < j):
+            area = max(area,min(height[i],height[j])*(j-i))
+            if height[i] <= height[j]:
+                i += 1
             else:
-                l+=1
+                j -= 1
         return area
 
         
